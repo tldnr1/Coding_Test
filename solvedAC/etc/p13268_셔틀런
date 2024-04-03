@@ -1,0 +1,22 @@
+goal = int(input())
+now = 0
+move = 1
+back = [5, 10, 15, 20, 404]
+re = 0
+
+for _ in range(goal % 100):
+    now += move
+
+    # 출발점 도달 시 반대로
+    if now == 0:
+        move *= -1
+    # 꼬깔 도달 시 리턴
+    elif now == back[re]:
+        re += 1
+        move *= -1
+
+# 구간 확인
+section = [0]
+for i in range(1, 5):
+    section += [i] * 5
+print(section[now])

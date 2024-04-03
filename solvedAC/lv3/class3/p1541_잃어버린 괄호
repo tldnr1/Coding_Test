@@ -1,0 +1,17 @@
+import sys
+
+input = sys.stdin.readline
+
+expr = list(input().rstrip().split(sep='-'))
+
+answer = 0
+for num in expr[0].split(sep='+'):
+    answer += int(num)
+
+for e in expr[1:]:
+    tmp = 0
+    for num in e.split(sep='+'):
+        tmp += int(num)
+    answer -= tmp
+
+print(answer)

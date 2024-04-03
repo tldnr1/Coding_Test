@@ -1,0 +1,35 @@
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+A = list(map(int, input().split()))
+
+
+def find_max(l, r):
+    if l == r:
+        return A[l]
+
+    mid = (l + r) // 2
+    left = find_max(l, mid)     # max in left
+    right = find_max(mid+1, r)  # max in right
+
+    # max with mid
+    # 1) left of mid
+    temp = 0
+    left_sum = -int(1e9)
+    for i in range(mid, l-1, -1):  # mid to l
+        temp += A[i]
+        left_sum = max(left_sum, temp)
+
+    # 2) right of mid
+    temp = 0
+    right_sum = -int(1e9)
+    for i in range(mid+1, r+1):     # mid+1 to r
+        temp += A[i]
+        right_sum = max(right_sum, temp)
+
+    # max of sum
+    return max(left, right, left_sum + right_sum)
+
+
+print(find_max(0, len(A)-1))
