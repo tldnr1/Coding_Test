@@ -1,0 +1,39 @@
+import sys
+input = sys.stdin.readline
+
+
+M = int(input())
+S = set()
+
+for _ in range(M):
+    read = input().split()
+    if len(read) == 1:
+        if read[0] == 'all':
+            S = set(list(range(1, 21)))
+            continue
+        elif read[0] == 'empty':
+            S = set()
+            continue
+
+    elif len(read) == 2:
+        op, x = read[0], int(read[1])
+        if op == 'add':
+            if x not in S:
+                S.add(x)
+            continue
+        elif op == 'remove':
+            if x in S:
+                S.remove(x)
+            continue
+        elif op == 'check':
+            if x in S:
+                print(1)
+            else:
+                print(0)
+            continue
+        elif op == 'toggle':
+            if x in S:
+                S.remove(x)
+            else:
+                S.add(x)
+            continue

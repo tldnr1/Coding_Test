@@ -1,0 +1,18 @@
+N, M = map(int, input().split())
+tree = list(map(int, input().split()))
+l, r = 1, max(tree)
+
+while l <= r:
+    mid = (l+r) // 2
+
+    res = 0
+    for t in tree:
+        if t >= mid:
+            res += t - mid
+
+    # res 확인
+    if res >= M:
+        l = mid + 1
+    else:
+        r = mid - 1
+print(r)

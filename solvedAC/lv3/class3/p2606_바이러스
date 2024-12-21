@@ -1,0 +1,22 @@
+from collections import deque
+
+n = int(input())
+graph = [[] for _ in range(n+1)]
+
+m = int(input())
+for _ in range(m):
+    u, v = map(int, input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+visited = [0] * (n+1)
+visited[1] = 1
+Q = deque([1])
+while Q:
+    v = Q.popleft()
+    for i in graph[v]:
+        if visited[i] == 0:
+            Q.append(i)
+            visited[i] = 1
+
+print(sum(visited) - 1)
