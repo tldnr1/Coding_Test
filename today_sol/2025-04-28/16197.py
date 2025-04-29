@@ -14,12 +14,12 @@ def get_start_pos():
 def in_range(y, x):
     return 0 <= y < N and 0 <= x < M
 
-def can_go(y, x):
+def move(y, x):
     if 0 <= y < N and 0 <= x < M:
         return not g[y][x] == '#'
     return True
 
-def go(y1, x1, y2, x2, count):
+def track(y1, x1, y2, x2, count):
     global min_count
 
     if not in_range(y1, x1) and not in_range(y2, x2):
@@ -37,15 +37,15 @@ def go(y1, x1, y2, x2, count):
     for dy, dx in zip(dys, dxs):
         ny1, nx1 = y1 + dy, x1 + dx
         ny2, nx2 = y2 + dy, x2 + dx
-        if can_go(ny1, nx1) and can_go(ny2, nx2):
-            go(ny1, nx1, ny2, nx2, count + 1)
-        elif can_go(ny1, nx1):
-            go(ny1, nx1, y2, x2, count + 1)
-        elif can_go(ny2, nx2):
-            go(y1, x1, ny2, nx2, count + 1)
+        if move(ny1, nx1) and move(ny2, nx2):
+            track(ny1, nx1, ny2, nx2, count + 1)
+        elif move(ny1, nx1):
+            track(ny1, nx1, y2, x2, count + 1)
+        elif move(ny2, nx2):
+            track(y1, x1, ny2, nx2, count + 1)
 
 coin1_start_pos, coin2_start_pos = get_start_pos()
-go(coin1_start_pos[0], coin1_start_pos[1], coin2_start_pos[0], coin2_start_pos[1], 0)
+track(coin1_start_pos[0], coin1_start_pos[1], coin2_start_pos[0], coin2_start_pos[1], 0)
 
 if min_count == 11:
     print(-1)
