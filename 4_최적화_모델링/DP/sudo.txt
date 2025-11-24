@@ -1,0 +1,12 @@
+[논리 설계]
+1. DP 테이블 정의: dp[i]가 의미하는 것은?
+   (예: dp[i] = i번째 날까지 일했을 때의 최대 수익)
+2. 초기값(Base Case) 설정:
+   dp[0] = ?, dp[1] = ?
+3. 점화식(Recurrence Relation) 도출:
+   "i번째 상태는 i-1번째 혹은 i-2번째 상태에서 어떻게 오는가?"
+   (예: dp[i] = max(dp[i-1], dp[i-2] + current_score))
+4. 반복문으로 테이블 채우기 (Bottom-up)
+   for i in range(2, N + 1):
+       dp[i] = 점화식 적용
+5. dp[N] 출력

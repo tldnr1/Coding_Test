@@ -1,0 +1,9 @@
+[논리 설계]
+1. 두 개의 포인터 초기화 (left = 0, right = 0, current_sum = 0)
+2. while (right < N): # 혹은 left <= right 등 문제따라 상이
+    A. 현재 상태가 목표값보다 작음? (current_sum < target)
+        -> right를 오른쪽으로 이동, current_sum에 값 추가
+    B. 현재 상태가 목표값보다 큼/같음? (current_sum >= target)
+        -> (같다면) 정답 카운트 증가 or 길이 갱신
+        -> left를 오른쪽으로 이동, current_sum에서 값 빼기
+3. 최종 결과 출력

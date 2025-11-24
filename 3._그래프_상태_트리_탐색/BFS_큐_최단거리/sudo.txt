@@ -1,0 +1,10 @@
+[논리 설계]
+1. Queue 생성 및 시작 노드 삽입 (q.append(start))
+2. 방문 배열 생성 및 시작점 방문 처리 (visited[start] = 1)
+3. while q: (큐가 빌 때까지)
+    A. 현재 노드 꺼내기 (cur = q.popleft())
+    B. [종료 조건] cur가 도착지점인가? -> 거리 리턴
+    C. 상하좌우/인접 노드(next) 순회:
+        - if 범위 내이고 and 방문 안 했고 and 갈 수 있는 길:
+            visited[next] = visited[cur] + 1 # 거리 갱신
+            q.append(next)

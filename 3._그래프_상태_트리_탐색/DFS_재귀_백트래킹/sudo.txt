@@ -1,0 +1,12 @@
+[논리 설계]
+1. 방문 체크 배열(visited) 생성
+2. DFS 함수 정의 (node, depth, current_value):
+    A. [종료 조건] 목표 depth 도달 or 더 이상 갈 곳 없음
+        -> 결과 갱신 후 return
+    B. [가지치기] 현재 상태가 유망하지 않음 (이미 최솟값 초과 등)
+        -> return (Backtracking)
+    C. 현재 node와 연결된 다음 노드들(next_node) 순회:
+        - if not visited[next_node]:
+            visited[next_node] = True  # 방문 표시
+            DFS(next_node, depth + 1, new_value) # 재귀 호출
+            visited[next_node] = False # [중요] 복구 (백트래킹 시 필수)

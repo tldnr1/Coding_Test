@@ -1,0 +1,11 @@
+[논리 설계]
+1. (필수) 대상 리스트 정렬하기 (array.sort())
+2. 검색 범위 인덱스 설정 (start = 0, end = max_value)
+3. while (start <= end):
+    A. 중간값 계산 (mid = (start + end) // 2)
+    B. 결정 함수 실행 (value = check(mid)) # mid 값으로 조건을 만족하는지 확인
+    C. [조건 분기]
+        - value가 목표보다 작다/부족하다 -> start = mid + 1 (범위 오른쪽 이동)
+        - value가 목표보다 크다/넘친다 -> end = mid - 1 (범위 왼쪽 이동)
+        - (필요시) 정답 후보 변수(answer)에 mid 저장
+4. 정답(answer) 출력
